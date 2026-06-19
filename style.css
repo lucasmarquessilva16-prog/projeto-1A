@@ -1,1 +1,190 @@
+/* Importação da fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
+:root {
+    --azul-escuro: #1e3c72;
+    --azul-royal: #2a5298;
+    --cinza-claro: #f5f7fa;
+    --texto-escuro: #2c3e50;
+    --texto-mutado: #607d8b;
+    --branco: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--cinza-claro);
+    color: var(--texto-escuro);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header com animação de gradiente fluído */
+header {
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #122342, #3a6073);
+    background-size: 400% 400%;
+    animation: gradienteAnimado 15s ease infinite;
+    color: var(--branco);
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.header-content h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    animation: deslizarCima 1s ease-out;
+}
+
+.header-content p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+    animation: deslizarCima 1.2s ease-out;
+}
+
+/* Layout Principal */
+.container {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+/* Cards com efeitos e animação de entrada */
+.card {
+    background: var(--branco);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(30, 60, 114, 0.05);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: aparecerCards 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.2s; }
+.card:nth-child(2) { animation-delay: 0.4s; }
+.card:nth-child(3) { animation-delay: 0.6s; }
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(30, 60, 114, 0.15);
+}
+
+.img-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover img {
+    transform: scale(1.08);
+}
+
+.card-content {
+    padding: 25px;
+}
+
+.card-content h3 {
+    color: var(--azul-escuro);
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+}
+
+.card-content p {
+    color: var(--texto-mutado);
+    font-size: 0.95rem;
+}
+
+/* Seção do Botão */
+.interacao {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.btn-animado {
+    background: linear-gradient(135deg, var(--azul-royal), var(--azul-escuro));
+    color: var(--branco);
+    border: none;
+    padding: 16px 35px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(30, 60, 114, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-animado:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(30, 60, 114, 0.4);
+}
+
+/* Caixa de Conclusão Oculta (Controlada pelo JS) */
+.conclusao-oculta {
+    max-width: 750px;
+    margin: 0 auto;
+    background: var(--branco);
+    border-left: 5px solid var(--azul-escuro);
+    border-radius: 4px;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    max-height: 0;
+    overflow: hidden;
+}
+
+.conclusao-oculta.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+    padding: 25px;
+    margin-top: 35px;
+    max-height: 500px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+footer {
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+    text-align: center;
+    padding: 25px;
+    margin-top: 80px;
+    font-size: 0.9rem;
+}
+
+/* Keyframes das Animações */
+@keyframes gradienteAnimado {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes deslizarCima {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes aparecerCards {
+    to { opacity: 1; transform: translateY(0); }
+}
